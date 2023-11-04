@@ -1,0 +1,10 @@
+local remote = 
+local old
+
+old = hookmetamethod(game, "__naamecall",function(self,...)
+local method = getnamecallmethod()
+if self == remote and method == "FireServer" then
+return nil
+end
+return old(self,...)
+end)
